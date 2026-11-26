@@ -1,0 +1,15 @@
+{
+  "name": "eagle-pocket",
+  "version": "1.0.0",
+  "description": "Browse your Eagle image library from your phone: an Eagle plugin plus an installable web app.",
+  "private": true,
+  "license": "MIT",
+  "bin": { "eagle-pocket": "bin/pocket.js" },
+  "scripts": {
+    "start": "node bin/pocket.js",
+    "test": "node --test",
+    "fixture": "node scripts/make-fixture.js",
+    "icons": "node scripts/make-icons.js"
+  },
+  "engines": { "node": ">=16" }
+}

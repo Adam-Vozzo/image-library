@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#101012">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Pocket">
+<meta name="referrer" content="no-referrer">
+<title>Pocket for Eagle</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<header id="bar">
+  <div class="bar-row" id="bar-main">
+    <button class="icon-btn" id="btn-menu" aria-label="Folders and tags"></button>
+    <button class="title" id="btn-title" aria-label="Scroll to top">
+      <span id="title">Pocket</span>
+      <small id="subtitle"></small>
+    </button>
+    <button class="icon-btn" id="btn-search" aria-label="Search"></button>
+  </div>
+  <div class="bar-row" id="bar-search" hidden>
+    <button class="icon-btn" id="btn-search-close" aria-label="Close search"></button>
+    <input id="search" type="search" placeholder="Search names, tags, notes, links" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search">
+  </div>
+  <div class="chips" id="chips">
+    <label class="chip select"><select id="sel-sort" aria-label="Sort">
+      <option value="added:1">Newest added</option>
+      <option value="added:0">Oldest added</option>
+      <option value="created:1">Newest created</option>
+      <option value="name:0">Name A–Z</option>
+      <option value="name:1">Name Z–A</option>
+      <option value="size:1">Largest</option>
+      <option value="rating:1">Top rated</option>
+      <option value="random:1">Shuffle</option>
+    </select></label>
+    <label class="chip select"><select id="sel-kind" aria-label="Type">
+      <option value="">All types</option>
+      <option value="image">Images</option>
+      <option value="gif">GIFs</option>
+      <option value="video">Videos</option>
+      <option value="audio">Audio</option>
+      <option value="other">Other files</option>
+    </select></label>
+    <label class="chip select"><select id="sel-star" aria-label="Rating">
+      <option value="0">Any rating</option>
+      <option value="1">★ and up</option>
+      <option value="2">★★ and up</option>
+      <option value="3">★★★ and up</option>
+      <option value="4">★★★★ and up</option>
+      <option value="5">★★★★★</option>
+    </select></label>
+    <button class="chip" id="chip-tag" hidden></button>
+    <button class="chip" id="chip-cols" aria-label="Change grid size"></button>
+    <button class="chip" id="chip-pin" hidden></button>
+  </div>
+</header>
+
+<main id="main">
+  <div id="grid" role="list"></div>
+  <div id="empty" hidden></div>
+</main>
+
+<div id="scrim" hidden></div>
+
+<nav id="drawer" aria-label="Library" hidden>
+  <div class="drawer-head">
+    <strong id="lib-name">Library</strong>
+    <small id="lib-status"></small>
+  </div>
+  <div class="drawer-body">
+    <div id="nav-quick"></div>
+    <h3>Folders</h3>
+    <div id="nav-folders"></div>
+    <h3>Tags</h3>
+    <input id="tag-filter" type="search" placeholder="Find a tag" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <div id="nav-tags"></div>
+  </div>
+  <div class="drawer-foot">
+    <button class="btn" id="btn-upload">Add to Eagle</button>
+    <button class="btn ghost" id="btn-settings">Device</button>
+  </div>
+  <input type="file" id="file-input" multiple hidden>
+</nav>
+
+<section id="viewer" hidden aria-label="Viewer">
+  <div id="track">
+    <div class="pane"></div><div class="pane"></div><div class="pane"></div>
+  </div>
+  <div class="v-top chrome">
+    <button class="icon-btn" id="v-close" aria-label="Close"></button>
+    <span id="v-count"></span>
+    <button class="icon-btn" id="v-info" aria-label="Details"></button>
+  </div>
+  <div class="v-bottom chrome">
+    <div id="v-name"></div>
+    <div class="v-actions">
+      <button class="act" id="v-share"><i></i><span>Share</span></button>
+      <a class="act" id="v-download" download><i></i><span>Save</span></a>
+      <button class="act" id="v-pin"><i></i><span>Offline</span></button>
+      <button class="act" id="v-link"><i></i><span>Source</span></button>
+    </div>
+  </div>
+</section>
+
+<section id="sheet" hidden aria-label="Details"><div class="grab"></div><div id="sheet-body"></div></section>
+
+<section id="pair" hidden>
+  <img src="icon.svg" alt="" width="72" height="72">
+  <h1>Pocket for Eagle</h1>
+  <p id="pair-msg">On your PC, open Eagle, run the <b>Pocket</b> plugin and scan the QR code with this phone's camera.</p>
+  <form id="pair-form">
+    <input id="pair-key" placeholder="…or paste the link or key here" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <button class="btn" type="submit">Connect</button>
+  </form>
+</section>
+
+<div id="toast" hidden></div>
+
+<script src="query.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
